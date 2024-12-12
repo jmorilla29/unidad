@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VALORACIÓN ESTADOS RESPIRATORIOS ALTERADOS EN RESIDENCIAS DE MAYORES</title>
+
+    <style>
+
+        @media print {
+
+            @page {
+
+                size: landscape;
+
+            }
+
+        }
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            margin: 20px;
+
+            line-height: 1.6;
+
+        }
+
+        h1 {
+
+            color: #2c3e50;
+
+        }
+
+        .question-container, .news-container {
+
+            margin-top: 20px;
+
+            padding: 20px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 8px;
+
+            background-color: #f9f9f9;
+
+        }
+
+        .question-container label {
+
+            font-weight: bold;
+
+        }
+
+        .news-container iframe {
+
+            width: 100%;
+
+            height: 800px;
+
+            border: none;
+
+            margin-bottom: 20px;
+
+        }
+
+        button {
+
+            margin-top: 20px;
+
+            padding: 15px 30px;
+
+            font-size: 18px;
+
+            background-color: #3498db;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            display: block;
+
+            width: 100%;
+
+            max-width: 300px;
+
+            margin-left: auto;
+
+            margin-right: auto;
+
+        }
+
+        button:hover {
+
+            background-color: #2980b9;
+
+        }
+
+        .print-note {
+
+            text-align: center;
+
+            margin-top: 10px;
+
+            font-size: 14px;
+
+            color: red;
+
+            font-weight: bold;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>VALORACIÓN ESTADOS RESPIRATORIOS ALTERADOS EN RESIDENCIAS DE MAYORES</h1>
+
+    <div class="question-container">
+
+        <label>¿La condición actual del residente parece diferente a su estado basal habitual?</label>
+
+        <div>
+
+            <input type="radio" id="yes" name="baseline" value="yes">
+
+            <label for="yes">Sí</label>
+
+        </div>
+
+        <div>
+
+            <input type="radio" id="no" name="baseline" value="no">
+
+            <label for="no">No</label>
+
+        </div>
+
+        <button id="proceed-btn" onclick="handleDecision()">Proceder</button>
+
+    </div>
+
+    <div id="news-container" class="news-container" style="display: none;">
+
+        <p>Por favor, complete el formulario NEWS 2 a continuación:</p>
+
+        <iframe id="news-form" src="https://www.rccc.eu/Pronostico/NEWS.html"></iframe>
+
+        <button id="print-btn" onclick="printPage()">IMPRIMIR</button>
+
+        <p class="print-note">CAMBIE EL NOMBRE DEL FICHERO POR EL AN/DNI Y REMITA MAIL UNIDAD RESIDENCIA</p>
+
+    </div>
+
+    <script>
+
+        function handleDecision() {
+
+            const selected = document.querySelector('input[name="baseline"]:checked');
+
+            if (!selected) {
+
+                alert("Por favor, seleccione una opción antes de proceder.");
+
+                return;
+
+            }
+
+            if (selected.value === "no") {
+
+                alert("La condición es basal. No se movilizan recursos, pero complete el NEWS 2 para documentación interna.");
+
+            } else {
+
+                alert("La condición es diferente del estado basal. Proceda a completar el NEWS 2 y tome las acciones necesarias.");
+
+            }
+
+            document.getElementById('news-container').style.display = "block";
+
+        }
+
+        function printPage() {
+
+            window.print(); 
+
+        }
+
+    </script>
+
+</body>
+
+</html>
